@@ -1,0 +1,22 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  nav {
+    display: flex;
+    padding: 1rem;
+    background: rgb(190, 189, 189);
+    gap: 0.8rem;
+    align-items: center;
+    h3 {
+      margin-right: auto;
+    }
+    .cart {
+      position: relative;
+      display: flex;
+      span {
+        font-size: 0.8rem;
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+}

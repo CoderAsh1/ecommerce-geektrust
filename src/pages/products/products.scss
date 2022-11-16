@@ -1,0 +1,37 @@
+.productspage {
+  padding: 3rem;
+  margin-top: 1rem;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+
+  .filters {
+    font-size: 12px;
+    box-shadow: 1px 1px 4px gray;
+    padding: 2rem 6rem 2rem 1.5rem;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      label {
+        display: flex;
+        gap: 0.3rem;
+      }
+    }
+  }
+  .search {
+    display: flex;
+    .s-icon {
+      margin: 0;
+      display: block;
+      background: rgb(190, 189, 189);
+      padding: 0 0.6rem;
+    }
+  }
+  .products {
+    flex: 1;
+    background: rgb(235, 235, 235);
+  }
+}
