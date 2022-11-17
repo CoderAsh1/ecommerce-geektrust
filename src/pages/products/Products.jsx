@@ -17,9 +17,7 @@ const Products = () => {
     dispatch({ type: "response-sucess", payload: data.data });
   }
 
-  function addToCart(id) {
-    dispatch({ type: "add-to-cart", payload: id });
-  }
+  console.log(cart);
 
   useEffect(() => {
     fetchData();
@@ -101,7 +99,7 @@ const Products = () => {
               <img src={prod.imageURL} alt="imageURL" width={"80%"} />
               <div className="price">
                 <h4>Rs.{prod.price}</h4>
-                {cart.some((p) => p.id === prod.id) ? (
+                {cart.find((p) => p.id === prod.id) ? (
                   <button
                     onClick={() =>
                       dispatch({ type: "remove-from-cart", payload: prod.id })
