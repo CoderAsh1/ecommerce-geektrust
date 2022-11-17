@@ -1,7 +1,13 @@
+import { createContext, useContext } from "react";
 import "./App.scss";
 import cartIcon from "./assets/cart-shopping-solid.gif";
+import { ecomContext } from "./context/ContextApi";
 import Products from "./pages/products/Products";
 function App() {
+  const {
+    state: { cart },
+  } = useContext(ecomContext);
+
   return (
     <div className="App">
       <nav>
@@ -9,7 +15,7 @@ function App() {
         <span>Products</span>
         <div className="cart">
           <img src={cartIcon} alt="cartIcon" height={"40px"} />
-          <span>12</span>
+          <span>{cart.length}</span>
         </div>
       </nav>
       <Products />

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 import reducer from "./reducer";
 
 export const ecomContext = createContext();
