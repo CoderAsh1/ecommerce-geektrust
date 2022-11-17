@@ -1,11 +1,11 @@
-import { createContext, useContext } from "react";
+import { useContext } from "react";
 import "./App.scss";
 import cartIcon from "./assets/cart-shopping-solid.gif";
 import { ecomContext } from "./context/ContextApi";
 import Products from "./pages/products/Products";
 function App() {
   const {
-    state: { cart },
+    state: { products, cart },
   } = useContext(ecomContext);
 
   return (

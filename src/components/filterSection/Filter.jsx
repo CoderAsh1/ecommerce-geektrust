@@ -3,23 +3,21 @@ import { ecomContext } from "../../context/ContextApi";
 import "./filter.scss";
 
 const Filter = () => {
-  const [checked, setChecked] = useState({
-    red: false,
-    green: false,
-    blue: false,
-    men: false,
-    women: false,
-    price0: false,
-    price251: false,
-    price450: false,
-    polo: false,
-    hoodie: false,
-    basic: false,
-  });
-
   const {
-    state: { products, cart },
-    dispatch,
+    filter: {
+      red,
+      green,
+      blue,
+      men,
+      women,
+      price0,
+      price251,
+      price450,
+      polo,
+      hoodie,
+      basic,
+    },
+    filterDispatch,
   } = useContext(ecomContext);
 
   return (
@@ -29,18 +27,32 @@ const Filter = () => {
         <label htmlFor="red">
           <input
             type="checkbox"
-            name="red"
-            checked={checked.red}
-            onChange={() => setChecked({ ...checked, red: !checked.red })}
+            id="red"
+            checked={red}
+            onChange={() => filterDispatch({ type: "col-red", payload: !red })}
           />
           Red
         </label>
         <label htmlFor="green">
-          <input type="checkbox" name="green" />
+          <input
+            type="checkbox"
+            id="green"
+            checked={green}
+            onChange={() =>
+              filterDispatch({ type: "col-green", payload: !green })
+            }
+          />
           Green
         </label>
         <label htmlFor="blue">
-          <input type="checkbox" name="blue" />
+          <input
+            type="checkbox"
+            id="blue"
+            checked={blue}
+            onChange={() =>
+              filterDispatch({ type: "col-blue", payload: !blue })
+            }
+          />
           Blue
         </label>
       </div>
@@ -49,28 +61,57 @@ const Filter = () => {
         <label htmlFor="men">
           <input
             type="checkbox"
-            name="men"
-            checked={checked.men}
-            onChange={() => setChecked({ ...checked, men: !checked.men })}
+            id="men"
+            checked={men}
+            onChange={() => filterDispatch({ type: "gen-men", payload: !men })}
           />
           Men
         </label>
         <label htmlFor="women">
-          <input type="checkbox" name="women" />
+          <input
+            type="checkbox"
+            id="women"
+            checked={women}
+            onChange={() =>
+              filterDispatch({ type: "gen-women", payload: !women })
+            }
+          />
           Women
         </label>
       </div>
       <div className="price">
         <h3>Price</h3>
         <label htmlFor="250">
-          <input type="checkbox" name="250" />0 - Rs.250
+          <input
+            type="checkbox"
+            id="250"
+            checked={price0}
+            onChange={() =>
+              filterDispatch({ type: "price-0", payload: !price0 })
+            }
+          />
+          0 - Rs.250
         </label>
         <label htmlFor="450">
-          <input type="checkbox" name="450" />
+          <input
+            type="checkbox"
+            id="450"
+            checked={price251}
+            onChange={() =>
+              filterDispatch({ type: "price-251", payload: !price251 })
+            }
+          />
           Rs.251 - Rs.450
         </label>
         <label htmlFor="450+">
-          <input type="checkbox" name="450+" />
+          <input
+            type="checkbox"
+            id="450+"
+            checked={price450}
+            onChange={() =>
+              filterDispatch({ type: "price-450", payload: !price450 })
+            }
+          />
           Rs.450
         </label>
       </div>
@@ -79,17 +120,34 @@ const Filter = () => {
         <label htmlFor="polo">
           <input
             type="checkbox"
-            name="polo"
-            onChange={dispatch({ type: "type-polo", payload: "Polo" })}
+            id="polo"
+            checked={polo}
+            onChange={() =>
+              filterDispatch({ type: "type-polo", payload: !polo })
+            }
           />
           Polo
         </label>
         <label htmlFor="Hoodie">
-          <input type="checkbox" name="Hoodie" />
+          <input
+            type="checkbox"
+            id="Hoodie"
+            checked={hoodie}
+            onChange={() =>
+              filterDispatch({ type: "type-hoodie", payload: !hoodie })
+            }
+          />
           Hoodie
         </label>
         <label htmlFor="Basic">
-          <input type="checkbox" name="Basic" />
+          <input
+            type="checkbox"
+            id="Basic"
+            checked={basic}
+            onChange={() =>
+              filterDispatch({ type: "type-basic", payload: !basic })
+            }
+          />
           Basic
         </label>
       </div>
