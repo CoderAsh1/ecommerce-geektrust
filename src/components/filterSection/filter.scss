@@ -1,0 +1,16 @@
+.filters {
+  max-height: 73vh;
+  font-size: 12px;
+  box-shadow: 1px 1px 4px gray;
+  padding: 1rem 6rem 2rem 1.5rem;
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    label {
+      display: flex;
+      gap: 0.3rem;
+    }
+  }
+}

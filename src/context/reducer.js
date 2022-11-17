@@ -12,6 +12,7 @@ export default function reducer(state, action) {
         ...state,
         cart: [...state.cart.filter((p) => p.id !== action.payload)],
       };
+    //filters -Color --------------------------------->
 
     default:
       return state;

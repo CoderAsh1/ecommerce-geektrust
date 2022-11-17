@@ -25,23 +25,6 @@
   display: flex;
   gap: 3rem;
 
-  .filters {
-    max-height: 73vh;
-    font-size: 12px;
-    box-shadow: 1px 1px 4px gray;
-    padding: 1rem 6rem 2rem 1.5rem;
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-      label {
-        display: flex;
-        gap: 0.3rem;
-      }
-    }
-  }
-
   .products {
     flex: 1;
     display: flex;
@@ -53,6 +36,7 @@
     padding-top: 0.2rem;
     gap: 2rem;
     justify-content: center;
+    align-content: flex-start;
     .product {
       padding: 0.4rem;
       box-shadow: 1px 1px 4px gray;
