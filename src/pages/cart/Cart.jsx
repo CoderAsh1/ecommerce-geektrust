@@ -57,7 +57,8 @@ const Cart = () => {
         ))}
         <hr />
         <h4 className="total">
-          Total amount : {cart.reduce((acc, cur) => acc + cur.price, 0)}
+          Total amount :{" "}
+          {cart.reduce((acc, cur) => acc + cur.price * cur.qty, 0)}
         </h4>
       </div>
     </div>
