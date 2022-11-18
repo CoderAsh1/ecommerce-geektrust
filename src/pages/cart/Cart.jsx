@@ -14,19 +14,46 @@ const Cart = () => {
       <h4>Shopping Cart</h4>
       <div className="items">
         {cart.map((item) => (
-          <div className="item" key={item.id}>
-            <img src={item.imageURL} alt="imageURL" width={"50px"} />
-            <div className="title-price">
-              <p>{item.name}</p>
-              <p>Rs.{item.price}</p>
+          <>
+            <div className="item" key={item.id}>
+              <img src={item.imageURL} alt="imageURL" width={"50px"} />
+              <div className="title-price">
+                <p>{item.name}</p>
+                <p>Rs.{item.price}</p>
+              </div>
+              <div className="count">
+                <button
+                  className={item.qty === 1 && "disable"}
+                  onClick={() =>
+                    item.qty !== 1 &&
+                    dispatch({ type: "remove-qty", payload: item.id })
+                  }
+                >
+                  -
+                </button>
+                <h4> {item.qty}</h4>
+                <button
+                  className={item.qty === item.quantity && "disable"}
+                  onClick={() =>
+                    item.qty < item.quantity &&
+                    dispatch({ type: "add-qty", payload: item.id })
+                  }
+                >
+                  +
+                </button>
+              </div>
+              <button
+                onClick={() =>
+                  dispatch({ type: "remove-from-cart", payload: item.id })
+                }
+              >
+                Delete
+              </button>
+              {item.qty === item.quantity && (
+                <h6 className="qty-alert">Max Quantity reached</h6>
+              )}
             </div>
-            <div className="count">
-              <button>-</button>
-              <h4> {item.qty}</h4>
-              <button>+</button>
-            </div>
-            <button>Delete</button>
-          </div>
+          </>
         ))}
         <hr />
         <h4 className="total">

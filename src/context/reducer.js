@@ -12,6 +12,22 @@ export default function reducer(state, action) {
         ...state,
         cart: [...state.cart.filter((p) => p.id !== action.payload)],
       };
+    case "add-qty": {
+      return {
+        ...state,
+        cart: state.cart.filter((p) =>
+          p.id === action.payload ? (p.qty += 1) : p.qty
+        ),
+      };
+    }
+    case "remove-qty": {
+      return {
+        ...state,
+        cart: state.cart.filter((p) =>
+          p.id === action.payload ? (p.qty -= 1) : p.qty
+        ),
+      };
+    }
     default:
       return state;
   }

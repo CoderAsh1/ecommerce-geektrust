@@ -1,13 +1,14 @@
 import "./products.scss";
 import searchIcon from "../../assets/search.svg";
-import { useContext, useEffect, useState } from "react";
+import filterIcon from "../../assets/filter.png";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ecomContext } from "../../context/ContextApi";
 import axios from "axios";
 import Filter from "../../components/filterSection/Filter";
 
 const Products = () => {
   const [searchValue, setSearchValue] = useState("");
-
+  const [toogleclass, setToogleClass] = useState("none");
   const {
     state: { products, cart },
     dispatch,
@@ -31,10 +32,14 @@ const Products = () => {
   } = filter;
 
   async function fetchData() {
-    let data = await axios.get(
-      "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
-    );
-    dispatch({ type: "response-sucess", payload: data.data });
+    try {
+      let data = await axios.get(
+        "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
+      );
+      dispatch({ type: "response-sucess", payload: data.data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function filterProdFunction() {
@@ -104,9 +109,17 @@ const Products = () => {
         >
           <img src={searchIcon} alt="" width={"15px"} />
         </div>
+        <img
+          src={filterIcon}
+          alt="filterIcon"
+          className="filter-icon"
+          onClick={() =>
+            setToogleClass(toogleclass === "block" ? "none" : "block")
+          }
+        />
       </div>
       <div className="productspage">
-        <Filter />
+        <Filter id={toogleclass} />
         <div className="products">
           {filterProdFunction().map((prod) => (
             <div className="product" key={prod.id}>

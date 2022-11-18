@@ -10,7 +10,7 @@
     font-weight: bold;
     .item {
       display: grid;
-      grid-template-columns: 1fr 1.4fr 1fr 1fr;
+      grid-template-columns: 1fr 1.4fr 1fr 1fr 1fr;
       align-items: center;
       gap: 2rem;
       .count {
@@ -29,5 +29,29 @@
   }
   .total {
     text-align: center;
+  }
+  .qty-alert {
+    color: red;
+  }
+}
+.disable {
+  cursor: default;
+  background: rgb(134, 134, 134);
+}
+
+@media (max-width: 600px) {
+  .cart {
+    margin: 0.4rem;
+    .items {
+      margin: 1rem;
+      width: 90%;
+      .item {
+        grid-template-columns: 1fr 1.4fr 1fr 1fr;
+        gap: 1rem;
+      }
+      .qty-alert {
+        width: 300%;
+      }
+    }
   }
 }

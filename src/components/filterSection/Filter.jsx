@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ecomContext } from "../../context/ContextApi";
 import "./filter.scss";
 
-const Filter = () => {
+const Filter = ({ id }) => {
   const {
     filter: {
       red,
@@ -21,7 +21,7 @@ const Filter = () => {
   } = useContext(ecomContext);
 
   return (
-    <div className="filters">
+    <div id="filters" className={id}>
       <div className="color">
         <h3>Color</h3>
         <label htmlFor="red">
