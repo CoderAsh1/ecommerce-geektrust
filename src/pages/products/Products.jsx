@@ -99,7 +99,7 @@ const Products = () => {
           type="text"
           placeholder="search for products..."
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.value.toLocaleLowerCase())}
         />
         <div
           className="s-icon"
