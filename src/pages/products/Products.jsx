@@ -31,6 +31,9 @@ const Products = () => {
     basic,
   } = filter;
 
+  document.addEventListener("mousedown", () => {
+    setToogleClass("none");
+  });
   async function fetchData() {
     try {
       let data = await axios.get(
