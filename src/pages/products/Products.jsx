@@ -9,6 +9,7 @@ import Filter from "../../components/filterSection/Filter";
 const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [toogleclass, setToogleClass] = useState("none");
+  const prodRef = useRef(".productsPage");
   const {
     state: { products, cart },
     dispatch,
@@ -31,9 +32,6 @@ const Products = () => {
     basic,
   } = filter;
 
-  document.addEventListener("mousedown", () => {
-    setToogleClass("none");
-  });
   async function fetchData() {
     try {
       let data = await axios.get(
@@ -93,7 +91,10 @@ const Products = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    prodRef.current.addEventListener("mousedown", (e) => {
+      setToogleClass("none");
+    });
+  }, [toogleclass]);
 
   return (
     <>
@@ -123,7 +124,7 @@ const Products = () => {
       </div>
       <div className="productspage">
         <Filter id={toogleclass} />
-        <div className="products">
+        <div className="products" ref={prodRef}>
           {filterProdFunction().map((prod) => (
             <div className="product" key={prod.id}>
               <img src={prod.imageURL} alt="imageURL" width={"80%"} />
