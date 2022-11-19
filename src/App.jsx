@@ -13,7 +13,10 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <h3>Teerex Store</h3>
+        <h3>
+          <Link to="/">Teerex Store</Link>
+        </h3>
+
         <span>Products</span>
         <Link className="cartIcon" to="/cart">
           <img src={cartIcon} alt="cartIcon" height={"40px"} />

@@ -9,7 +9,9 @@ import Filter from "../../components/filterSection/Filter";
 const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [toogleclass, setToogleClass] = useState("none");
-  const prodRef = useRef(".productsPage");
+  const prodRef = useRef();
+  const filterRef = useRef();
+  const filterIconRef = useRef();
   const {
     state: { products, cart },
     dispatch,
@@ -92,12 +94,17 @@ const Products = () => {
   useEffect(() => {
     fetchData();
     prodRef.current.addEventListener("mousedown", (e) => {
-      setToogleClass("none");
+      if (
+        !filterRef.current.contains(e.target) &&
+        !filterIconRef.current.contains(e.target)
+      ) {
+        setToogleClass("none");
+      }
     });
   }, [toogleclass]);
 
   return (
-    <>
+    <div ref={prodRef} style={{ textAlign: "center" }} className="container">
       <div className="search">
         <input
           type="text"
@@ -115,16 +122,20 @@ const Products = () => {
         </div>
         <img
           src={filterIcon}
+          ref={filterIconRef}
           alt="filterIcon"
           className="filter-icon"
-          onClick={() =>
-            setToogleClass(toogleclass === "block" ? "none" : "block")
-          }
+          onClick={() => {
+            setToogleClass(toogleclass === "block" ? "none" : "block");
+            console.log("first");
+          }}
         />
       </div>
       <div className="productspage">
-        <Filter id={toogleclass} />
-        <div className="products" ref={prodRef}>
+        <div ref={filterRef}>
+          <Filter id={toogleclass} />
+        </div>
+        <div className="products">
           {filterProdFunction().map((prod) => (
             <div className="product" key={prod.id}>
               <img src={prod.imageURL} alt="imageURL" width={"80%"} />
@@ -153,7 +164,7 @@ const Products = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
